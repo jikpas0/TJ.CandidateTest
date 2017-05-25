@@ -25,11 +25,6 @@ namespace PairingTest.Web.Controllers
         public ViewResult Index()
         {
             QuestionnaireViewModel questionnaire = _questions.GetQuestionsAsync().Result;
-            var test = new QuestionnaireViewModel
-            {
-                QuestionnaireTitle = questionnaire.QuestionnaireTitle,
-                QuestionsText = questionnaire.QuestionsText
-            };
 
             return View(questionnaire);
         }
