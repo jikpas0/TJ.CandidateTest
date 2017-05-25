@@ -1,18 +1,37 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using PairingTest.Web.Interfaces;
 using PairingTest.Web.Models;
 
 namespace PairingTest.Web.Controllers
 {
     public class QuestionnaireController : Controller
     {
-          /* ASYNC ACTION METHOD... IF REQUIRED... */
-//        public async Task<ViewResult> Index()
-//        {
-//        }
+        private readonly IQuestions _questions;
+
+        public QuestionnaireController(IQuestions questions)
+        {
+            _questions = questions;
+        }
+
+        public QuestionnaireController() : this(new Questions())
+        {
+        }
 
         public ViewResult Index()
         {
-            return View(new QuestionnaireViewModel());
+            QuestionnaireViewModel questionnaire = _questions.GetQuestionsAsync().Result;
+            var test = new QuestionnaireViewModel
+            {
+                QuestionnaireTitle = questionnaire.QuestionnaireTitle,
+                QuestionsText = questionnaire.QuestionsText
+            };
+
+            return View(questionnaire);
         }
     }
 }
