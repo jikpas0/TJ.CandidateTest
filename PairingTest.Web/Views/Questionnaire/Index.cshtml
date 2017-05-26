@@ -3,42 +3,43 @@
 <html>
 <head>
     <title>@Model.QuestionnaireTitle</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <style>
-        .header {
-            text-align: center;
-            margin-bottom: 5%;
-        }
-
-        .question-lisiting {
-            margin-left: 5%;
-            color: blue
-        }
-
-        .answer-lisiting {
-            margin-left: 10%;
-            color: red
+        .remove-bullets {
+            list-style-type: none
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <div class="container">
         <h1>@Model.QuestionnaireTitle</h1>
     </div>
-<div>
-    <ul class="question-lisiting">
+    <br/>
+    <div class="container">
         @foreach (var Text in @Model.QuestionsText)
         {
-            <li>@Text</li>
+            <div class="form-group row">
+                <form>
+                    <div class="col-md-3">
+                        <label for="@Text" class="col-form-label" style="margin-top: 10px;">@Text</label>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" id="@Text">
+                            <option selected>Please Select</option>
+                            <option>Havana</option>
+                            <option>Paris</option>
+                            <option>Warsaw</option>
+                            <option>Berlin</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
         }
-    </ul>
-    <span style="margin-left: 10%;">Answers respectively shown below for the above questions</span>
-    <ul class="answer-lisiting">
-        <li>Havana</li>
-        <li>Paris</li>
-        <li>Warsaw</li>
-        <li>Berlin</li>
-    </ul>
-</div>
+    </div>
 </body>
 
 </html>
