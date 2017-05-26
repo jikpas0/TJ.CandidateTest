@@ -3,13 +3,42 @@
 <html>
 <head>
     <title>@Model.QuestionnaireTitle</title>
+    <style>
+        .header {
+            text-align: center;
+            margin-bottom: 5%;
+        }
+
+        .question-lisiting {
+            margin-left: 5%;
+            color: blue
+        }
+
+        .answer-lisiting {
+            margin-left: 10%;
+            color: red
+        }
+    </style>
 </head>
 <body>
-    <h1>@Model.QuestionnaireTitle</h1>
-    @foreach (var Text in @Model.QuestionsText)
-    {
-        <li>@Text</li>
-    }
+    <div class="header">
+        <h1>@Model.QuestionnaireTitle</h1>
+    </div>
+<div>
+    <ul class="question-lisiting">
+        @foreach (var Text in @Model.QuestionsText)
+        {
+            <li>@Text</li>
+        }
+    </ul>
+    <span style="margin-left: 10%;">Answers respectively shown below for the above questions</span>
+    <ul class="answer-lisiting">
+        <li>Havana</li>
+        <li>Paris</li>
+        <li>Warsaw</li>
+        <li>Berlin</li>
+    </ul>
+</div>
 </body>
 
 </html>
