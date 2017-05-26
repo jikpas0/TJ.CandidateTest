@@ -8,8 +8,8 @@ namespace PairingTest.Web
 {
     public class Questions : IQuestions
     {
-        static HttpClient client = new HttpClient();
-        string APIEndPoint = ConfigurationManager.AppSettings.Get("QuestionnaireServiceUri");
+        private static HttpClient client = new HttpClient();
+        private readonly string APIEndPoint = ConfigurationManager.AppSettings.Get("QuestionnaireServiceUri");
         
         public async Task<QuestionnaireViewModel> GetQuestionsAsync()
         {
